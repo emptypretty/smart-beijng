@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -35,8 +36,20 @@ public class ContentFragment extends BaseFragment {
 	private NoScrollViewPager mViewPager;
 	@ViewInject(R.id.rg_group)
 	private RadioGroup rGroup;
-
+	@ViewInject(R.id.rb_home)
+	private RadioButton rHome;
+	@ViewInject(R.id.rb_news)
+	private RadioButton rNews;
+	@ViewInject(R.id.rb_smart)
+	private RadioButton rSmart;
+	@ViewInject(R.id.rb_gov)
+	private RadioButton rGov;
+	@ViewInject(R.id.rb_setting)
+	private RadioButton rSetting;
+	private int mCurrentPos;
 	private ArrayList<BasePager> mList;// 5个标签页的集合
+
+	private ContentAdapter mContentAdapter;
 
 	@Override
 	public View initViews() {
@@ -60,7 +73,8 @@ public class ContentFragment extends BaseFragment {
 		mList.add(new GovAffairsPager(mActivity));
 		mList.add(new SettingPager(mActivity));
 
-		mViewPager.setAdapter(new ContentAdapter());
+		mContentAdapter = new ContentAdapter();
+		mViewPager.setAdapter(mContentAdapter);
 
 		Log.i(Tag, "mList = " + mList);
 
@@ -73,23 +87,26 @@ public class ContentFragment extends BaseFragment {
 				case R.id.rb_home:
 					// 首页
 					mViewPager.setCurrentItem(0, false);// 增加false参数是为了去掉页面切换的动画
-
 					break;
 				case R.id.rb_news:
 					// 新闻中心
 					mViewPager.setCurrentItem(1, false);
+
 					break;
 				case R.id.rb_smart:
 					// 智慧服务
 					mViewPager.setCurrentItem(2, false);
+
 					break;
 				case R.id.rb_gov:
 					// 政务
 					mViewPager.setCurrentItem(3, false);
+
 					break;
 				case R.id.rb_setting:
 					// 设置
 					mViewPager.setCurrentItem(4, false);
+
 					break;
 
 				default:
@@ -190,6 +207,12 @@ public class ContentFragment extends BaseFragment {
 			container.removeView((View) object);
 		}
 
+	}
+
+	// 获取新闻中心对象
+	public NewsCenterPager getNewsCenterPager() {
+		NewsCenterPager pager = (NewsCenterPager) mList.get(1);// 新闻中心在集合的第二个位置添加
+		return pager;
 	}
 
 }

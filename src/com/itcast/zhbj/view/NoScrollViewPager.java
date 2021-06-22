@@ -24,4 +24,10 @@ public class NoScrollViewPager extends ViewPager {
 		return true;
 	}
 
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+		// true表示拦截，false不拦截，传给子控件
+		return false;// 标签页的ViewPager不拦截新闻菜单详情页页签的ViewPager
+	}
+
 }

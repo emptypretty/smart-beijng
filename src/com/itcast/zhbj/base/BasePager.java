@@ -2,11 +2,14 @@ package com.itcast.zhbj.base;
 
 import android.app.Activity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.itcast.zhbj.MainActivity;
 import com.itcast.zhbj.R;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 /**
  * 5个标签页的基类
@@ -43,7 +46,23 @@ public class BasePager {
 		btnMenu = (ImageButton) view.findViewById(R.id.btn_menu);
 		flContainer = (FrameLayout) view.findViewById(R.id.fl_container);
 
+		// 点击
+		btnMenu.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				toggle();
+			}
+		});
 		return view;
+	}
+
+	// 控制侧边栏的开关
+	protected void toggle() {
+		MainActivity mainUI = (MainActivity) mActivity;
+		SlidingMenu slidingMenu = mainUI.getSlidingMenu();
+		slidingMenu.toggle();// 如果当前为开, 则关;反之亦然
 	}
 
 	// 初始化数据

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp" >
+   
+    
+    <ImageView 
+        android:id="@+id/iv_icon"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:scaleType="fitXY"
+        android:background="#a000"
+        android:padding="0.5dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/news_pic_default"/>
+    
+    <TextView 
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/iv_icon"
+        android:maxLines="2"
+        android:text="健康和大家开始打了卡家里放家里看见了看见"
+        android:textSize="16sp"
+        android:textColor="#000"/>
+    
+    <TextView 
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/tv_title"
+        android:text="2014-10-11"
+        android:textSize="16sp"
+        android:textColor="#a000"/>
+    
+    
+
+</RelativeLayout>

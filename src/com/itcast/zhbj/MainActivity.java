@@ -35,7 +35,7 @@ public class MainActivity extends SlidingFragmentActivity {
 
 		SlidingMenu slidingMenu = getSlidingMenu();
 		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);// 全屏触摸
-		slidingMenu.setBehindOffset(240);// 屏幕预留300px
+		slidingMenu.setBehindOffset(280);// 屏幕预留300px
 
 		initFragment();
 	}
@@ -55,5 +55,22 @@ public class MainActivity extends SlidingFragmentActivity {
 		// 通过tag找到fragment
 		// ContentFragment fragment = (ContentFragment)
 		// fm.findFragmentByTag(TAG_CONTENT);
+	}
+
+	// 获取侧边栏fragment对象
+	public LeftMenuFragment getLeftMenuFragment() {
+		FragmentManager fm = getSupportFragmentManager();
+		LeftMenuFragment fragment = (LeftMenuFragment) fm
+				.findFragmentByTag(TAG_LEFT_MENU);
+
+		return fragment;
+	}
+
+	// 获取主页fragment对象
+	public ContentFragment getContentFragment() {
+		FragmentManager fm = getSupportFragmentManager();
+		ContentFragment fragment = (ContentFragment) fm
+				.findFragmentByTag(TAG_CONTENT);
+		return fragment;
 	}
 }
