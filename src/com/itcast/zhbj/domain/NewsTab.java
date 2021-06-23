@@ -11,7 +11,7 @@ public class NewsTab {
 	public NewsTabData data;
 
 	public class NewsTabData {
-		public String moreString;
+		public String more;
 		public ArrayList<TopNews> topnews;
 		public ArrayList<News> news;
 

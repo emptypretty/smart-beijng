@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -114,7 +115,7 @@ public class NewsCenterPager extends BasePager {
 		mPagers.add(new NewsMenuDetailPager(mActivity,
 				mNewsMenu.data.get(0).children));// 通过构造方法传递数据
 		mPagers.add(new TopicMenuDetailPager(mActivity));
-		mPagers.add(new PhotosMenuDetailPager(mActivity));
+		mPagers.add(new PhotosMenuDetailPager(mActivity, btnDisplay));
 		mPagers.add(new InteractMenuDetailPager(mActivity));
 
 		// 设置新闻菜单详情页为默认页面
@@ -125,6 +126,13 @@ public class NewsCenterPager extends BasePager {
 	public void setMenuDetailPager(int position) {
 		System.out.println("新闻中心要修改菜单详情页啦:" + position);
 		BaseMenuDetailPager pager = mPagers.get(position);
+
+		// 判断是否是组图，如果是，显示切换按钮，不是则隐藏
+		if (pager instanceof PhotosMenuDetailPager) {
+			btnDisplay.setVisibility(View.VISIBLE);
+		} else {
+			btnDisplay.setVisibility(View.GONE);
+		}
 
 		// 清除之前帧布局显示的内容
 		flContainer.removeAllViews();

@@ -29,6 +29,8 @@ public class BasePager {
 	// 当前页面的根布局
 	public View mRootView;
 
+	public ImageButton btnDisplay;
+
 	public BasePager(Activity activity) {
 		mActivity = activity;
 
@@ -45,7 +47,7 @@ public class BasePager {
 		tv_title = (TextView) view.findViewById(R.id.tv_title);
 		btnMenu = (ImageButton) view.findViewById(R.id.btn_menu);
 		flContainer = (FrameLayout) view.findViewById(R.id.fl_container);
-
+		btnDisplay = (ImageButton) view.findViewById(R.id.btn_display);
 		// 点击
 		btnMenu.setOnClickListener(new OnClickListener() {
 
